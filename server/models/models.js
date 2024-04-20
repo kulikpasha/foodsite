@@ -4,6 +4,7 @@ const {DataTypes} = require('sequelize')
 const User = sequelize.define('user',{
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     email: {type: DataTypes.STRING, unique: true},
+    name: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: 'USER'}
 })
@@ -56,15 +57,14 @@ Feedback.belongsTo(User)
 Recipe.hasMany(Favourites)
 Favourites.belongsTo(Recipe)
 
-Recipe.hasOne(Type)
-Type.belongsTo(Recipe)
+Type.hasOne(Recipe)
+Recipe.belongsTo(Type)
 
 Brand.hasOne(Recipe)
 Recipe.belongsTo(Brand)
 
 Recipe.hasMany(Feedback)
 Feedback.belongsTo(Recipe)
-
 Recipe.hasMany(Ing_Rec)
 Ing_Rec.belongsTo(Recipe)
 
