@@ -5,7 +5,12 @@ class RecipesController {
 
     async getAll(req, res){
 
+
+    }    
+    async getOne(req, res){
+
     }
 }
+
 
 module.exports = new RecipesController()
