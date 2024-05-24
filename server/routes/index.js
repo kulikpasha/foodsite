@@ -10,11 +10,11 @@ const forumRouter = require('./forumRouter')
 
 
 router.use('/user', userRouter)
-router.use('/brands', brandsRouter)
-router.use('/types', typesRouter)
-router.use('/recipes', recipesRouter)
+router.use('/brand', brandsRouter)
+router.use('/type', typesRouter)
+router.use('/recipe', recipesRouter)
 router.use('/feedback', feedbackRouter)
 router.use('/forum', forumRouter)
-router.use('/ingridients', ingridientsRouter)
+router.use('/ingridient', ingridientsRouter)
 
 module.exports = router

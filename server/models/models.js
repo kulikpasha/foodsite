@@ -17,19 +17,20 @@ const Recipe = sequelize.define('recipe',{
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING, unique: true, allowNull: false},
     img: {type: DataTypes.STRING, allowNull: false},
-    instructions: {type: DataTypes.STRING, allowNull: false},
     rating: {type: DataTypes.FLOAT, defaultValue: 0}
 })
 
 const Ingridient = sequelize.define('ingridients',{
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    name: {type: DataTypes.STRING, unique: true, allowNull: false},
-})
-
-const Ing_Rec = sequelize.define('ing_rec',{
-    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    name: {type: DataTypes.STRING, allowNull: false},
     amount: {type: DataTypes.STRING, allowNull: false},
     amount_type: {type: DataTypes.STRING, allowNull: false}
+})
+
+const Instruction = sequelize.define('instruction',{
+    id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    title: {type: DataTypes.STRING,  allowNull: false},
+    description: {type: DataTypes.STRING,  allowNull: false}
 })
 
 const Brand = sequelize.define('brand',{
@@ -65,19 +66,21 @@ Recipe.belongsTo(Brand)
 
 Recipe.hasMany(Feedback)
 Feedback.belongsTo(Recipe)
-Recipe.hasMany(Ing_Rec)
-Ing_Rec.belongsTo(Recipe)
 
-Ingridient.hasMany(Ing_Rec)
-Ing_Rec.belongsTo(Ingridient)
+Recipe.hasMany(Ingridient)
+Ingridient.belongsTo(Recipe)
+
+Recipe.hasMany(Instruction, {as:'instructions'})
+Instruction.belongsTo(Recipe)
+
 
 module.exports = {
     User,
     Favourites,
     Recipe,
     Ingridient,
-    Ing_Rec,
     Brand,
     Type,
-    Feedback
+    Feedback,
+    Instruction,
 }
