@@ -1,11 +1,7 @@
 class IngridientsController {
-    async create(req, res){
+  async create(req, res) {}
 
-    }
-
-    async getAll(req, res){
-
-    }
+  async getAll(req, res) {}
 }
 
-module.exports = new IngridientsController()
+module.exports = new IngridientsController();
